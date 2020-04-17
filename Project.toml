@@ -1,0 +1,9 @@
+name = "AxisGraphs"
+uuid = "9b7463f8-9cc9-4056-84d1-3475304cfbab"
+authors = ["Zachary P. Christensen <zchristensen7@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+AxisIndices = "f52c9ee2-1b1c-4fd8-8546-6350938c7f11"
+LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
+SimpleWeightedGraphs = "47aef6b3-ad0c-573a-a1e2-d07658019622"
