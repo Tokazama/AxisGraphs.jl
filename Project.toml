@@ -9,6 +9,12 @@ LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
 SimpleWeightedGraphs = "47aef6b3-ad0c-573a-a1e2-d07658019622"
 StaticRanges = "d8176aec-3168-11e9-3c98-e3954798be3a"
 
+[compat]
+AxisIndices = "0.3"
+LightGraphs = "1"
+SimpleWeightedGraphs = "1"
+StaticRanges = "0.6"
+
 [extras]
 LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
 SimpleWeightedGraphs = "47aef6b3-ad0c-573a-a1e2-d07658019622"
