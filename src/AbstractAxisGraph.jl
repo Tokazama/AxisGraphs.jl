@@ -16,7 +16,7 @@ LightGraphs.has_vertex(g::AbstractAxisGraph, x...) = has_vertex(parent(g), x...)
 
 function LightGraphs.add_vertex!(g::AbstractAxisGraph)
     add_vertex!(parent(g))
-    StaticRanges.grow_last!(axes(g))
+    StaticRanges.grow_last!(axes(g), 1)
     return g
 end
 
@@ -24,10 +24,10 @@ LightGraphs.ne(g::AbstractAxisGraph) = ne(parent(g))
 LightGraphs.edges(g::AbstractAxisGraph) = edges(parent(g))
 
 function LightGraphs.add_edge!(g::AbstractAxisGraph, u, v)
-    return add_edge!(parent(g), to_index(axes(g)), to_index(axes(g), v))
+    return add_edge!(parent(g), to_index(axes(g), u), to_index(axes(g), v))
 end
 function LightGraphs.add_edge!(g::AbstractAxisGraph, u, v, val)
-    return add_edge!(parent(g), to_index(axes(g)), to_index(axes(g), v), val)
+    return add_edge!(parent(g), to_index(axes(g), u), to_index(axes(g), v), val)
 end
 
 function LightGraphs.rem_edge!(g::AbstractAxisGraph, u, v)
@@ -42,7 +42,6 @@ function LightGraphs.outneighbors(g::AbstractAxisGraph, v)
 end
 
 Base.issubset(g::AbstractAxisGraph, h::AbstractGraph) = issubset(parent(g), h)
-
 
 LightGraphs.is_directed(::Type{<:AbstractAxisGraph{T,G}}) where {T,G}= is_directed(G)
 
@@ -78,6 +77,7 @@ end
 Base.zero(g::AbstractAxisGraph) = AxisGraph(zero(parent(g)), axes(g))
 
 Base.copy(g::AbstractAxisGraph) = AxisGraph(copy(parent(g)), copy(axes(g)))
+
 function Base.show(io::IO, g::AbstractAxisGraph{T}) where {T}
     dir = is_directed(parent(g)) ? "directed" : "undirected"
     print(io, "{$(nv(g)), $(ne(g))} $dir axis $T graph")
