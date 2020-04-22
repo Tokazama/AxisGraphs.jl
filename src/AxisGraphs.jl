@@ -13,7 +13,7 @@ export
     AxisGraph
 
 include("AbstractAxisGraph.jl")
-struct AxisGraph{T,G<:AbstractGraph{T},A} <: AbstractAxisGraph{T,G,A}
+struct AxisGraph{T,G<:AbstractGraph{T},A<:AbstractAxis} <: AbstractAxisGraph{T,G,A}
     graph::G
     axis::A
 end
