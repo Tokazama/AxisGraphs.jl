@@ -26,5 +26,13 @@ using SimpleWeightedGraphs
 
     gdx = AxisGraph(SimpleWeightedDiGraph(path_digraph(4)))
     gx = AxisGraph(SimpleWeightedGraph())
+
+    g = AxisGraph(SimpleDiGraph([0 1 0 0 0;
+                                 0 0 1 0 0;
+                                 1 0 0 1 0;
+                                 0 0 0 0 1;
+                                 0 0 0 1 0]), [:one, :two, :three, :four, :five])
+    @test inneighbors(g, 4) == [3, 5] == inneighbors(g, :four)
+    @test outneighbors(g, 4) == [5] == outneighbors(g, :four)
 end
 
